@@ -5,7 +5,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
-  title: 'My Site',
+  title: 'SME 2.0',
   tagline: 'Dinosaurs are cool',
   favicon: 'img/favicon.ico',
 
@@ -75,9 +75,9 @@ const config: Config = {
       respectPrefersColorScheme: true,
     },
     navbar: {
-      title: 'My Site',
+      title: 'SME 2.0',
       logo: {
-        alt: 'My Site Logo',
+        alt: 'SME 2.0 Logo',
         src: 'img/logo.svg',
       },
       items: [
@@ -85,7 +85,7 @@ const config: Config = {
           type: 'docSidebar',
           sidebarId: 'tutorialSidebar',
           position: 'left',
-          label: 'Tutorial',
+          label: 'Git Best Practices',
         },
         {to: '/blog', label: 'Blog', position: 'left'},
         {
@@ -102,8 +102,8 @@ const config: Config = {
           title: 'Docs',
           items: [
             {
-              label: 'Tutorial',
-              to: '/docs/intro',
+              label: 'Git Best Practices',
+              to: '/docs',
             },
           ],
         },
