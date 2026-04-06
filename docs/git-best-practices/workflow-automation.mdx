@@ -1,0 +1,148 @@
+---
+sidebar_position: 7
+sidebar_label: Automation
+---
+
+# Automation
+
+Automating enforcements and checks across the entire workflow, and applying cross-cutting practices that support automation.
+
+## Automate everything possible
+
+Enable automation across your workflow:
+
+- **CI Builds** - Automatic compilation and artifact generation
+- **Tests** - Run test suite on every commit
+- **Lint Checks** - Enforce code style automatically
+- **Security Scans** - Detect vulnerabilities and secrets
+- **Dependency Updates** - Automated dependency management
+- **Release Automation** - Auto-generate versions and tags
+
+## Squash merges or rebase for clean history
+
+Maintain a clean, readable commit history:
+
+### Squash merge
+
+Combines all commits into a single commit:
+
+```bash
+git merge --squash feature-branch
+```
+
+- Pros: Clean history, single commit per feature
+- Cons: Loses individual commit details
+
+### Rebase
+
+Replays commits on top of the base branch:
+
+```bash
+git rebase main
+```
+
+- Pros: Linear history, preserves individual commits
+- Cons: Requires force push (on your own branches only)
+
+**Best Practice:** Choose one strategy for your team and enforce it consistently.
+
+## Maintain repository hygiene
+
+Keep your repository clean and organized:
+
+### Essential files
+
+- `README.md` - Project overview and setup instructions
+- `CONTRIBUTING.md` - Contribution guidelines
+- `CHANGELOG.md` - Release notes and changes
+- `.gitignore` - Files to exclude from version control
+- `LICENSE` - Project license
+
+### Practices
+
+- Remove unnecessary files and binaries
+- Keep node_modules and build artifacts out of Git
+- Archive old or deprecated branches
+- Update documentation regularly
+- Review and update dependencies
+
+### Automated checks
+
+Partially automated but highly beneficial:
+
+- **Lint repository structure** - Ensure required files exist
+- **Check for required files** - README, CONTRIBUTING, LICENSE
+- **Dependency updates** - Automated security updates
+- **CI checks** - Validate repository state on every push
+
+### Tools
+
+- **Dependabot** - Automated dependency updates
+- **Renovate** - Dependency automation and updater
+- **Pre-commit hooks** - Local repository validation
+- **CI Repository Lint** - Custom CI checks
+
+### Example required files check
+
+```yaml
+# .github/workflows/repo-hygiene.yml
+name: Repository Hygiene
+on: [push, pull_request]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Check required files
+        run: |
+          test -f README.md || (echo "README.md missing" && exit 1)
+          test -f CONTRIBUTING.md || (echo "CONTRIBUTING.md missing" && exit 1)
+          test -f LICENSE || (echo "LICENSE missing" && exit 1)
+```
+
+## Practical automation summary
+
+| Practice | Automation Level | Tools |
+|----------|------------------|-------|
+| Branching strategy | Fully enforceable | commitlint, GitHub Actions, branch protection rules |
+| Short-lived branches | Partial | CI stale branch detection, automated cleanup |
+| Conventional commits | Fully | commitlint, husky, CI validation |
+| Mandatory reviews | Fully enforceable | GitHub branch protection, CODEOWNERS |
+| Tag releases | Fully | semantic-release, standard-version |
+| CHANGELOG | Fully auto-generated | semantic-release, release-please |
+| Secrets scanning | Fully | GitHub Secret Scanning, GitLeaks, TruffleHog |
+| Issue linking | Fully | GitHub Actions, PR templates |
+| Repository hygiene | Partial | Dependabot, Renovate, CI checks |
+| Clean history | Fully | Squash merge settings, rebase enforcement |
+| Automation pipelines | Fully | CI/CD platforms (GitHub Actions, GitLab CI, etc.) |
+
+## Getting started with automation
+
+### Step 1: Choose your tools
+
+Select tools based on your platform (GitHub, GitLab, Bitbucket) and team needs.
+
+### Step 2: Configure gradually
+
+Start with one or two automations:
+
+1. Conventional commits validation
+2. Branch protection and required reviews
+
+### Step 3: Expand incrementally
+
+Add more automations as the team adapts:
+
+- Automated testing
+- Secret scanning
+- Dependency updates
+- Release automation
+
+### Step 4: Monitor and adjust
+
+Collect feedback and refine automation rules to match your team's workflow.
+
+---
+
+**Remember:** Automation should enable your team, not frustrate them. Start simple and iterate.

@@ -1,0 +1,57 @@
+---
+sidebar_position: 6
+---
+
+# Security
+
+Preventing secrets from entering Git, with automated detection and prevention.
+
+## Secrets must never enter Git
+
+Critical security principle:
+
+- ❌ Do not commit credentials, tokens, or API keys
+- ❌ Never hardcode passwords or database URLs
+- ✅ Use environment variables or secret management tools
+- ✅ Use `.env` files with `.gitignore` protection
+- ✅ Implement secret scanning in CI pipeline
+
+### Common secrets to protect
+
+- Database credentials
+- API keys and tokens
+- AWS/Cloud credentials
+- Private encryption keys
+- OAuth secrets
+
+## Automation
+
+**Secrets can be automatically detected and prevented**:
+
+### Automated scanning
+
+Tools scan commits for:
+
+- AWS keys and credentials
+- API tokens and authentication secrets
+- Passwords and database URLs
+- Private encryption keys
+- OAuth tokens
+
+### Tools
+
+- **GitHub Secret Scanning** - Native GitHub scanning
+- **GitLeaks** - Detect secrets in git history
+- **TruffleHog** - Finds secrets in git repositories
+- **Snyk** - Dependency vulnerabilities and secret detection
+
+### Pre-commit protection
+
+```bash
+# .husky/pre-commit
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# Scan for secrets before commit
+npx detect-secrets scan --baseline .secrets.baseline
+```

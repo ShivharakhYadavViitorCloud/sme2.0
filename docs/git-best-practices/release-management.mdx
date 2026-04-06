@@ -1,0 +1,136 @@
+---
+sidebar_position: 5
+---
+
+# Release Management
+
+Tagging releases and maintaining CHANGELOGs, including automation options.
+
+## Tag releases properly
+
+Use semantic versioning for all production releases:
+
+```
+vMAJOR.MINOR.PATCH
+```
+
+### Examples
+
+- `v1.0.0` - Initial release
+- `v1.1.0` - New features added (backward compatible)
+- `v1.1.1` - Bug fix (backward compatible)
+- `v2.0.0` - Breaking changes
+
+### Benefits
+
+- Clear version traceability
+- Easy rollback capability
+- Dependency management for other projects
+- Release history documentation
+
+## Maintain a CHANGELOG
+
+Document all release changes in `CHANGELOG.md`:
+
+### Format
+
+Categorize entries under:
+
+- **Added** - New features introduced
+- **Changed** - Changed functionality
+- **Fixed** - Bug fixes
+- **Removed** - Removed features
+- **Deprecated** - Soon-to-be-removed features
+
+### Example
+
+```markdown
+## [1.1.0] - 2024-01-15
+### Added
+- New API endpoint for user profiles
+- Dark mode support
+
+### Fixed
+- Memory leak in websocket handler
+
+### Changed
+- Updated authentication flow to use OAuth 2.0
+```
+
+## Automation: releases
+
+Release tagging can be **fully automated via CI/CD**:
+
+### Auto-create tags on merge
+
+Automatically generate semantic version tags when code merges to `main`:
+
+```
+main branch merge → analyze commits → create vX.Y.Z tag
+```
+
+### Tools
+
+- **semantic-release** - Fully automated versioning and releases
+- **GitHub Actions** - Custom release automation
+- **standard-version** - Conventional commits to version management
+- **Release Pipelines** - Azure Pipelines or GitLab CI
+
+### Example GitHub Action
+
+```yaml
+name: Release
+on:
+  push:
+    branches: [main]
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+      - run: npx semantic-release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+```
+
+## Automation: CHANGELOG
+
+CHANGELOG can be **fully auto-generated from commits**:
+
+### Automated generation
+
+Parse conventional commits to generate changelog entries:
+
+```
+feat → Added
+fix → Fixed
+refactor → Changed
+docs → Documentation updates
+```
+
+### Tools
+
+- **semantic-release** - Auto-generates CHANGELOG.md
+- **standard-version** - Generate CHANGELOG from commits
+- **release-please** - Automated release PR creator
+- **conventional-changelog** - Changelog generator
+
+### Example output
+
+```markdown
+## [1.2.0] - 2024-03-15
+
+### Added
+- User profile API endpoint
+- Dark mode support
+
+### Fixed
+- Memory leak in WebSocket connection
+- Session timeout handling
+
+### Changed
+- Updated authentication to OAuth 2.0
+```
