@@ -4,10 +4,18 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
+const gtgId = process.env.GTAG_ID;
+/** Public base URL of the Node API (`server/`), e.g. http://localhost:8787 — no trailing /api */
+const publicApiBaseUrl = process.env.PUBLIC_API_BASE_URL ?? '';
+
 const config: Config = {
   title: 'SME 2.0',
   tagline: 'Team handbook for Git workflows, reviews, security, and automation',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/favicon.png',
+
+  customFields: {
+    publicApiBaseUrl,
+  },
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
@@ -36,6 +44,16 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
+          editUrl:
+            'https://github.com/ShivharakhYadavViitorCloud/sme2.0/tree/main/',
+          lastVersion: 'current',
+          versions: {
+            current: {
+              label: 'Next',
+              path: 'next',
+              badge: true,
+            },
+          },
         },
         blog: false,
         theme: {
@@ -46,6 +64,8 @@ const config: Config = {
   ],
 
   plugins: [
+    // Local search (no Algolia crawl). For Algolia DocSearch, remove this plugin
+    // and configure theme-search-algolia instead — do not enable both.
     [
       require.resolve('@easyops-cn/docusaurus-search-local'),
       {
@@ -55,16 +75,41 @@ const config: Config = {
         explicitSearchResultPath: true,
       },
     ],
+    ...(gtgId
+      ? [
+          [
+            '@docusaurus/plugin-google-gtag',
+            {
+              trackingID: gtgId,
+              anonymizeIP: true,
+            },
+          ] as [string, Record<string, unknown>],
+        ]
+      : []),
   ],
 
   themeConfig: {
-    // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
+    metadata: [
+      {
+        name: 'keywords',
+        content:
+          'Git, DevOps, code review, conventional commits, SME, handbook, Docusaurus',
+      },
+    ],
     colorMode: {
       respectPrefersColorScheme: true,
+      disableSwitch: false,
+    },
+    docs: {
+      sidebar: {
+        hideable: true,
+        autoCollapseCategories: true,
+      },
     },
     navbar: {
       title: 'SME 2.0',
+      hideOnScroll: true,
       logo: {
         alt: 'SME 2.0 Logo',
         src: 'img/logo.svg',
@@ -75,6 +120,15 @@ const config: Config = {
           sidebarId: 'tutorialSidebar',
           position: 'left',
           label: 'Git Best Practices',
+        },
+        {
+          to: '/api-reference',
+          label: 'API reference',
+          position: 'left',
+        },
+        {
+          type: 'docsVersionDropdown',
+          position: 'right',
         },
         {
           href: 'https://github.com/ShivharakhYadavViitorCloud/sme2.0',
@@ -91,7 +145,15 @@ const config: Config = {
           items: [
             {
               label: 'Git Best Practices',
-              to: '/docs',
+              to: '/docs/next/git-best-practices/overview',
+            },
+            {
+              label: 'API reference',
+              to: '/api-reference',
+            },
+            {
+              label: 'Platform upgrade',
+              to: '/docs/next/project-upgrade',
             },
           ],
         },
@@ -114,6 +176,14 @@ const config: Config = {
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
+      additionalLanguages: [
+        'bash',
+        'diff',
+        'json',
+        'powershell',
+        'nginx',
+        'yaml',
+      ],
     },
   } satisfies Preset.ThemeConfig,
 };

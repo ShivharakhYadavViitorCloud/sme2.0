@@ -27,8 +27,8 @@ const FeatureList: FeatureItem[] = [
     description: (
       <>
         Open <strong>Git Best Practices</strong> in the top bar or jump in from
-        the button above. Use the sidebar to move topic by topic; the overview
-        page links to each section.
+        the button above (latest docs live under <strong>Next</strong>). Use the
+        sidebar to move topic by topic; the overview page links to each section.
       </>
     ),
   },

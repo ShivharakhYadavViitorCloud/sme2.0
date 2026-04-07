@@ -1,0 +1,8 @@
+.swaggerMount {
+  min-height: 480px;
+  margin-top: 1rem;
+}
+
+.swaggerMount :global(.swagger-ui) {
+  font-family: var(--ifm-font-family-base);
+}

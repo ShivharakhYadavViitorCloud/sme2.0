@@ -1,0 +1,78 @@
+---
+sidebar_position: 3
+---
+
+# Conventional Commits
+
+Standardizing commit messages for better clarity and downstream automation.
+
+## Format
+
+Follow a standard commit format for clarity and automation:
+
+```
+type(scope): short summary
+```
+
+### Common types
+
+- `feat` - New feature
+- `fix` - Bug fix
+- `refactor` - Code refactoring
+- `docs` - Documentation updates
+- `test` - Test additions or changes
+- `chore` - Maintenance tasks
+- `perf` - Performance improvements
+- `ci` - CI/CD configuration
+
+### Examples
+
+```
+feat(auth): add token refresh endpoint
+fix(login): handle invalid session gracefully
+refactor(api): extract validation logic
+docs(readme): update setup instructions
+```
+
+**Best Practice:** Keep commits small and meaningful. Each commit should represent a single logical change.
+
+## Automation
+
+Automation can enforce and validate commit messages:
+
+### Reject non-standard commits
+
+```
+❌ update stuff
+❌ fix bug
+❌ WIP
+
+✅ feat(auth): add token refresh
+✅ fix(login): handle invalid session
+✅ docs(api): update endpoint documentation
+```
+
+### Tools
+
+- **commitlint** - Validate commit messages against a config
+- **husky** - Git hooks framework for pre-commit checks
+- **CI Lint Rules** - Enforce in the CI pipeline
+
+### Example commitlint configuration
+
+```javascript
+// .commitlintrc.js
+module.exports = {
+  extends: ['@commitlint/config-conventional'],
+  rules: {
+    'type-enum': [
+      2,
+      'always',
+      ['feat', 'fix', 'refactor', 'docs', 'test', 'chore', 'perf', 'ci']
+    ],
+    'subject-case': [2, 'never', ['start-case', 'pascal-case', 'upper-case']],
+    'subject-empty': [2, 'never'],
+    'subject-full-stop': [2, 'never', '.'],
+  }
+};
+```

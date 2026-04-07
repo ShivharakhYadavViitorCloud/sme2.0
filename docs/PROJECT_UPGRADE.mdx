@@ -1,0 +1,95 @@
+---
+sidebar_position: 100
+slug: project-upgrade
+title: Platform upgrade
+description: SME 2.0 documentation site features, environment variables, and how to extend the platform.
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+This page summarizes the production-oriented enhancements applied to this Docusaurus site. For setup details and extension points, see the sections below.
+
+## Feature checklist
+
+| Area | What was added |
+|------|----------------|
+| Search | Local full-text search (`@easyops-cn/docusaurus-search-local`) — no Algolia account required |
+| Versioning | Docs snapshot **1.0** plus **Next** (current `docs/` tree) |
+| Navigation | Explicit sidebar, collapsible categories, navbar API link, version dropdown |
+| SEO | Favicon, social preview image, meta keywords |
+| Analytics | Google tag (optional) via `GTAG_ID` at build time |
+| API docs | Example OpenAPI 3 schema and `/api-reference` page (Swagger UI via CDN) |
+| Feedback | “Was this helpful?” stored via the Node API (`POST /api/feedback`) in MongoDB |
+| AI assistant | Floating chat when `PUBLIC_API_BASE_URL` is set; server proxies OpenAI (`POST /api/chat`) |
+| CI | Typecheck, build, markdown lint, external link check |
+
+## Environment variables
+
+### Docusaurus (build / `.env.local`)
+
+| Variable | Purpose |
+|----------|---------|
+| `GTAG_ID` | Optional Google Analytics measurement ID |
+| `PUBLIC_API_BASE_URL` | Base URL of the SME API server **without** a path suffix, e.g. `http://localhost:8787` or `https://api.yourdomain.com`. The browser calls `POST {PUBLIC_API_BASE_URL}/api/chat` and `POST .../api/feedback`. |
+
+### Node API (`server/` — see `server/.env.example`)
+
+| Variable | Purpose |
+|----------|---------|
+| `MONGODB_URI` | MongoDB connection string (feedback + chat audit) |
+| `OPENAI_API_KEY` | OpenAI key for `/api/chat` |
+| `OPENAI_MODEL` | Optional model id (default `gpt-4o-mini`) |
+| `PORT` | Listen port (default `8787`) |
+| `CORS_ORIGINS` | Comma-separated allowed browser origins (must include your Docusaurus dev server and production site origin) |
+
+Copy the repo root `.env.example` to `.env.local` for Docusaurus, and `server/.env.example` to `server/.env` for the API (never commit secrets).
+
+## Versioning workflow
+
+1. Edit files under `docs/` (the **Next** docs).
+2. When you want to freeze a release: `npm run docs:version -- X.Y` (e.g. `1.1`).
+3. Commit `versioned_docs/`, `versioned_sidebars/`, and `versions.json`.
+
+Older versions live under `/docs/X.Y/…`; the latest unreleased docs are under `/docs/next/…` when **Next** is configured as the current label.
+
+## Multi-language command examples
+
+Use the built-in tabs component for CLI snippets:
+
+<Tabs groupId="shell">
+  <TabItem value="bash" label="Bash">
+    ```bash
+    npm ci && npm run build
+    ```
+  </TabItem>
+  <TabItem value="powershell" label="PowerShell">
+    ```powershell
+    npm ci; npm run build
+    ```
+  </TabItem>
+</Tabs>
+
+## API reference page
+
+- Schema: `static/openapi/openapi.yaml` (served at `/openapi/openapi.yaml`).
+- Page: [API reference](/api-reference) loads Swagger UI in the browser.
+
+Replace the example schema with your service’s OpenAPI document and rebuild.
+
+## SME API server (`server/`)
+
+The **Express + MongoDB** service in `server/` exposes:
+
+- `POST /api/chat` — OpenAI proxy (stores a short audit row in MongoDB)
+- `POST /api/feedback` — Persists doc feedback (`path`, `title`, `helpful`, …)
+- `GET /health` — Liveness
+
+Run locally: from the repo root, `npm run api:dev` (requires `server/.env`). Point `PUBLIC_API_BASE_URL` at the same origin (e.g. `http://localhost:8787`) when running `npm start` for the docs site.
+
+GitHub Pages only serves static files; host the API on a VM, container platform, or PaaS, set `PUBLIC_API_BASE_URL` in the **build** environment for production docs, and ensure `CORS_ORIGINS` includes your GitHub Pages URL.
+
+## Further reading
+
+- [Docusaurus versioning](https://docusaurus.io/docs/versioning)
+- [Google Analytics plugin](https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-google-gtag)

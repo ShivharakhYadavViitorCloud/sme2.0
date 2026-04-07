@@ -1,5 +1,6 @@
 # Dependencies
 /node_modules
+/server/node_modules
 
 # Production
 /build
@@ -11,6 +12,8 @@
 # Misc
 .DS_Store
 .env.local
+/server/.env
+/server/dist
 .env.development.local
 .env.test.local
 .env.production.local

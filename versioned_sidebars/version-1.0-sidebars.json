@@ -1,0 +1,21 @@
+{
+  "tutorialSidebar": [
+    {
+      "type": "category",
+      "label": "Git Best Practices",
+      "link": {
+        "type": "doc",
+        "id": "git-best-practices/overview"
+      },
+      "items": [
+        "git-best-practices/overview",
+        "git-best-practices/branching-strategy",
+        "git-best-practices/conventional-commits",
+        "git-best-practices/code-reviews",
+        "git-best-practices/release-management",
+        "git-best-practices/security",
+        "git-best-practices/workflow-automation"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+---
+sidebar_position: 4
+---
+
+# Code Reviews
+
+Enforcing mandatory reviews through protected branches and tying work to traceable issues.
+
+## Mandatory code reviews (protected branch)
+
+- All changes must go through a Pull Request
+- Ensure CI checks pass before approval
+- Configure branch protection rules to prevent direct commits to `main`
+
+### Benefits
+
+- Catches bugs early
+- Shares knowledge across the team
+- Maintains code quality standards
+- Provides audit trail for compliance
+
+## Automation
+
+Automation can enforce and assist with code reviews:
+
+### AI-based code review
+
+- Automated static analysis
+- Security vulnerability detection
+- Performance issue flagging
+- Common bug pattern detection
+
+### Human review enforcement
+
+- Require minimum number of approvals
+- Block merge without review
+- CODEOWNERS for automatic reviewer assignment
+
+### Tools
+
+- **GitHub Code Review** - Native protected branch rules
+- **Reviewpad** - AI-powered code reviews
+- **Sonarqube** - Code quality and security scanning
+- **CodeFactor** - Automated code reviews
+
+## Use issues + PR linking
+
+Connect work items with code changes:
+
+### Examples
+
+```
+Fixes #123
+Closes PROJ-456
+Resolves #789, #790
+```
+
+### Benefits
+
+- Automatic issue closing on merge
+- Traceability from code to requirements
+- Better project management
+- Audit trail for compliance

@@ -1,0 +1,8 @@
+﻿{
+  "label": "Git Best Practices",
+  "position": 1,
+  "link": {
+    "type": "doc",
+    "id": "git-best-practices/overview"
+  }
+}

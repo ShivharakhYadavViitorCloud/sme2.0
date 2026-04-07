@@ -1,0 +1,25 @@
+openapi: 3.0.3
+info:
+  title: SME 2.0 Example API
+  description: >
+    Replace this file with your service OpenAPI document. It is served as a static
+    asset and loaded by the API reference page.
+  version: 1.0.0
+servers:
+  - url: https://api.example.com/v1
+paths:
+  /health:
+    get:
+      summary: Health check
+      operationId: getHealth
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: ok

@@ -1,0 +1,62 @@
+---
+sidebar_position: 2
+---
+
+# Branching Strategy
+
+How to organize and manage branches effectively across your repositories.
+
+## Choose a strategy (avoid chaos early)
+
+Adopt a consistent branching strategy across all repositories. Two popular approaches:
+
+### GitFlow
+
+Suitable for structured releases with multiple branch types:
+
+- `main` - Production-ready code
+- `develop` - Integration branch for features
+- `feature/*` - Feature branches
+- `release/*` - Release preparation branches
+- `hotfix/*` - Emergency production fixes
+
+### Trunk Based Development
+
+Short-lived feature branches merged frequently into `main`:
+
+- Reduces merge conflicts
+- Enables continuous deployment
+- Requires strong CI/CD pipeline
+
+**Best Practice:** Choose one strategy and enforce it consistently across all repositories.
+
+## Keep branches short-lived
+
+- Feature branches should ideally live **< 2–3 days**
+- Merge or rebase frequently with the base branch to avoid large conflicts
+- This reduces integration issues and simplifies code reviews
+
+## Automation
+
+Automation can enforce branch naming conventions and structure:
+
+### Branch name validation
+
+Block PRs if branch names don't match defined patterns:
+
+```
+✅ feature/*
+✅ bugfix/*
+✅ hotfix/*
+✅ docs/*
+✅ chore/*
+
+❌ update-stuff
+❌ fix-bug
+```
+
+### Tools
+
+- **commit lint** - Validate branch names via git hooks
+- **branch-name-check** - GitHub Action for branch validation
+- **CI Lint Rules** - Custom CI pipeline checks

@@ -1,0 +1,43 @@
+.feedback {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1rem;
+  margin-top: 1.5rem;
+  padding: 1rem 1.25rem;
+  border-radius: var(--ifm-global-radius);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  background: var(--ifm-background-surface-color);
+}
+
+.prompt {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btn {
+  cursor: pointer;
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--ifm-global-radius);
+  border: 1px solid var(--ifm-color-primary);
+  background: transparent;
+  color: var(--ifm-color-primary);
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.btn:hover {
+  background: var(--ifm-color-primary);
+  color: var(--ifm-color-white);
+}
+
+.btnActive {
+  background: var(--ifm-color-primary);
+  color: var(--ifm-color-white);
+}
