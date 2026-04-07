@@ -6,7 +6,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
   title: 'SME 2.0',
-  tagline: 'Dinosaurs are cool',
+  tagline: 'Team handbook for Git workflows, reviews, security, and automation',
   favicon: 'img/favicon.ico',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
@@ -14,16 +14,11 @@ const config: Config = {
     v4: true, // Improve compatibility with the upcoming Docusaurus v4
   },
 
-  // Set the production url of your site here
-  url: 'https://your-docusaurus-site.example.com',
-  // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
+  url: 'https://ShivharakhYadavViitorCloud.github.io',
   baseUrl: '/',
 
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  organizationName: 'ShivharakhYadavViitorCloud',
+  projectName: 'sme2.0',
 
   onBrokenLinks: 'throw',
 
@@ -41,16 +36,24 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
         blog: false,
         theme: {
           customCss: './src/css/custom.css',
         },
       } satisfies Preset.Options,
+    ],
+  ],
+
+  plugins: [
+    [
+      require.resolve('@easyops-cn/docusaurus-search-local'),
+      {
+        hashed: true,
+        language: ['en'],
+        highlightSearchTermsOnTargetPage: true,
+        explicitSearchResultPath: true,
+      },
     ],
   ],
 
@@ -74,7 +77,7 @@ const config: Config = {
           label: 'Git Best Practices',
         },
         {
-          href: 'https://github.com/facebook/docusaurus',
+          href: 'https://github.com/ShivharakhYadavViitorCloud/sme2.0',
           label: 'GitHub',
           position: 'right',
         },
@@ -93,33 +96,20 @@ const config: Config = {
           ],
         },
         {
-          title: 'Community',
+          title: 'Repository',
           items: [
             {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+              label: 'Source',
+              href: 'https://github.com/ShivharakhYadavViitorCloud/sme2.0',
             },
             {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
-            },
-            {
-              label: 'X',
-              href: 'https://x.com/docusaurus',
-            },
-          ],
-        },
-        {
-          title: 'More',
-          items: [
-            {
-              label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
+              label: 'Issues',
+              href: 'https://github.com/ShivharakhYadavViitorCloud/sme2.0/issues',
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} SME 2.0. Built with Docusaurus.`,
     },
     prism: {
       theme: prismThemes.github,

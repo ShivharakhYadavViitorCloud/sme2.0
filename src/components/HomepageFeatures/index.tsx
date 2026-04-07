@@ -11,32 +11,35 @@ type FeatureItem = {
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Easy to Use',
+    title: 'What this handbook covers',
     Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        Branching, conventional commits, reviews, releases, security, and
+        automation—written for teams that want consistent Git hygiene without
+        guesswork.
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
+    title: 'How to use it',
     Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        Open <strong>Git Best Practices</strong> in the top bar or jump in from
+        the button above. Use the sidebar to move topic by topic; the overview
+        page links to each section.
       </>
     ),
   },
   {
-    title: 'Powered by React',
+    title: 'Who it is for',
     Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        Developers and leads on the SME team (and anyone onboarding onto the same
+        standards). Treat it as the shared reference when setting up repos, CI,
+        and review rules.
       </>
     ),
   },
