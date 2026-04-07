@@ -1,0 +1,36 @@
+.section {
+  text-align: center;
+  padding: 5rem 2rem;
+  background: linear-gradient(
+    135deg,
+    var(--landing-gradient-start),
+    var(--landing-gradient-end)
+  );
+  color: #fff;
+}
+
+.heading {
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin-bottom: 0.75rem;
+  color: #fff;
+}
+
+.subtitle {
+  font-size: 1.15rem;
+  opacity: 0.9;
+  margin-bottom: 2rem;
+}
+
+.section :global(.button--primary) {
+  background: #fff;
+  color: var(--landing-gradient-start);
+  border-color: #fff;
+  font-size: 1.1rem;
+  padding: 0.8rem 2.5rem;
+}
+
+.section :global(.button--primary):hover {
+  background: #f0fdf4;
+  border-color: #f0fdf4;
+}

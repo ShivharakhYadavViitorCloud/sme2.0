@@ -9,8 +9,8 @@ const gtgId = process.env.GTAG_ID;
 const publicApiBaseUrl = process.env.PUBLIC_API_BASE_URL ?? '';
 
 const config: Config = {
-  title: 'SME 2.0',
-  tagline: 'Team handbook for Git workflows, reviews, security, and automation',
+  title: 'lint-sage',
+  tagline: 'Zero-config linting, formatting & Git hooks for any JS/TS project',
   favicon: 'img/favicon.png',
 
   customFields: {
@@ -94,7 +94,7 @@ const config: Config = {
       {
         name: 'keywords',
         content:
-          'Git, DevOps, code review, conventional commits, SME, handbook, Docusaurus',
+          'lint-sage, ESLint, Prettier, Husky, CLI, Git hooks, code quality, JavaScript, TypeScript',
       },
     ],
     colorMode: {
@@ -108,10 +108,10 @@ const config: Config = {
       },
     },
     navbar: {
-      title: 'SME 2.0',
+      title: 'lint-sage',
       hideOnScroll: true,
       logo: {
-        alt: 'SME 2.0 Logo',
+        alt: 'lint-sage Logo',
         src: 'img/logo.svg',
       },
       items: [
@@ -171,7 +171,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} SME 2.0. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} lint-sage. Built with Docusaurus.`,
     },
     prism: {
       theme: prismThemes.github,

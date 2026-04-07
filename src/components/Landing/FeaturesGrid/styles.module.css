@@ -1,0 +1,53 @@
+.section {
+  padding: 5rem 0;
+  background: var(--section-alt-bg);
+}
+
+.sectionTitle {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2.5rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+}
+
+.group {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 2rem;
+}
+
+.groupTitle {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.pill {
+  display: inline-block;
+  padding: 0.35rem 0.9rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border-radius: 999px;
+  background: var(--ifm-color-primary);
+  color: #fff;
+  opacity: 0.9;
+  transition: opacity 0.15s, transform 0.15s;
+}
+
+.pill:hover {
+  opacity: 1;
+  transform: scale(1.05);
+}

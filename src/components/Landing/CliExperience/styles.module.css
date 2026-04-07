@@ -1,0 +1,29 @@
+.section {
+  padding: 5rem 0;
+}
+
+.sectionTitle {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 1.05rem;
+  opacity: 0.8;
+  max-width: 560px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.6;
+}
+
+.terminalWrap {
+  display: flex;
+  justify-content: center;
+}
+
+.big {
+  max-width: 600px;
+  font-size: 0.9rem;
+}

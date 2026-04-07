@@ -1,0 +1,88 @@
+.hero {
+  background: linear-gradient(
+    135deg,
+    var(--landing-gradient-start),
+    var(--landing-gradient-end)
+  );
+  padding: 5rem 0 4rem;
+  color: #fff;
+  overflow: hidden;
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.text {
+  max-width: 540px;
+}
+
+.heading {
+  font-size: 3rem;
+  line-height: 1.15;
+  font-weight: 800;
+  margin: 0 0 1rem;
+  color: #fff;
+}
+
+.accent {
+  background: linear-gradient(90deg, #f0fdf4, #bbf7d0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  opacity: 0.92;
+  margin-bottom: 2rem;
+}
+
+.buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.buttons :global(.button--primary) {
+  background: #fff;
+  color: var(--landing-gradient-start);
+  border-color: #fff;
+}
+.buttons :global(.button--primary):hover {
+  background: #f0fdf4;
+  border-color: #f0fdf4;
+}
+.buttons :global(.button--outline) {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.5);
+}
+.buttons :global(.button--outline):hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: #fff;
+}
+
+.terminalWrap {
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media (max-width: 768px) {
+  .inner {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .heading {
+    font-size: 2.2rem;
+  }
+  .buttons {
+    justify-content: center;
+  }
+  .terminalWrap {
+    justify-content: center;
+  }
+}

@@ -1,0 +1,62 @@
+.section {
+  padding: 5rem 0;
+  background: var(--section-alt-bg);
+}
+
+.sectionTitle {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2.5rem;
+}
+
+.tableWrap {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.table th,
+.table td {
+  padding: 0.85rem 1.2rem;
+  text-align: left;
+  border-bottom: 1px solid var(--card-border);
+}
+
+.table th {
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  opacity: 0.7;
+}
+
+.colManual {
+  color: inherit;
+}
+
+.colSage {
+  color: var(--ifm-color-primary);
+}
+
+.label {
+  font-weight: 600;
+}
+
+.bad {
+  color: #dc2626;
+}
+[data-theme='dark'] .bad {
+  color: #f87171;
+}
+
+.good {
+  color: var(--ifm-color-primary);
+  font-weight: 600;
+}

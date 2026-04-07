@@ -15,6 +15,15 @@
   --ifm-color-primary-lightest: #3cad6e;
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+
+  --landing-gradient-start: #2e8555;
+  --landing-gradient-end: #0d9488;
+  --terminal-bg: #1e1e2e;
+  --terminal-text: #cdd6f4;
+  --terminal-green: #a6e3a1;
+  --card-bg: #ffffff;
+  --card-border: #e5e7eb;
+  --section-alt-bg: #f8fafb;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -29,6 +38,11 @@
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
   --ifm-background-color: #1b1b1d;
   --ifm-background-surface-color: #242526;
+  --landing-gradient-start: #25c2a0;
+  --landing-gradient-end: #0891b2;
+  --card-bg: #242526;
+  --card-border: #3a3b3c;
+  --section-alt-bg: #1f1f21;
 }
 
 [data-theme='dark'] div[class*='themedCodeBlock'] {
@@ -37,4 +51,26 @@
 
 [data-theme='dark'] .navbar {
   box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.08);
+}
+
+/* Landing page animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fadeInUp {
+  animation: fadeInUp 0.5s ease-out both;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
 }

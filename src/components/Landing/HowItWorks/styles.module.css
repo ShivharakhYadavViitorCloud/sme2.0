@@ -1,0 +1,78 @@
+.section {
+  padding: 5rem 0;
+  background: var(--section-alt-bg);
+}
+
+.sectionTitle {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2.5rem;
+}
+
+.flow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  position: relative;
+}
+
+.step {
+  text-align: center;
+  position: relative;
+  padding: 1.5rem 1rem;
+}
+
+.icon {
+  font-size: 2.2rem;
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.stepTitle {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+
+.stepDesc {
+  font-size: 0.9rem;
+  opacity: 0.75;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.connector {
+  display: none;
+}
+
+@media (min-width: 769px) {
+  .connector {
+    display: block;
+    position: absolute;
+    top: 1.5rem;
+    right: -0.85rem;
+    width: 1.5rem;
+    height: 2px;
+    background: var(--ifm-color-primary);
+    opacity: 0.5;
+  }
+  .connector::after {
+    content: '';
+    position: absolute;
+    right: -4px;
+    top: -4px;
+    border: solid var(--ifm-color-primary);
+    border-width: 0 2px 2px 0;
+    padding: 3px;
+    transform: rotate(-45deg);
+    opacity: 0.5;
+  }
+}
+
+@media (max-width: 768px) {
+  .flow {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
